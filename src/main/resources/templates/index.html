@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>listado estudiante</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.css}"/>
+    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css}"/>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{webjars/font-awesome/5.11.2/css/all.css} "/>
+</head>
+<body>
+	
+	<div class="container my-3">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+        <nav class="navbar navbar-dark bg-primary"> 
+        <h2 style="color:#FFFFFF" align="center">Listado de Estudiante</h2>
+		</nav>
+		<br>
+		<br>
+		
+	<table class="table">
+		<thead class="bg-primary">
+			<th style="color:#FFFFFF" scope="col">Codigo</th>
+			<th style="color:#FFFFFF"  scope="col">Nombre</th>
+			<th style="color:#FFFFFF" scope="col">Apellido</th>
+			<th style="color:#FFFFFF" scope="col">Carne</th>
+			<th style="color:#FFFFFF" scope="col">Carrera</th>
+		</thead>
+		<th:block  scope="row" th:each="estudiante, row:${estudiantes}">
+			<tr>
+				<th th:text="${estudiante.codigoEstudiante}"/>
+				<th th:text="${estudiante.nombre}"/>
+				<th th:text="${estudiante.apellido}"/>
+				<th th:text="${estudiante.carne}"/>
+				<th th:text="${estudiante.carrera}"/>
+			</tr>
+		</th:block>
+	</table>
+	
+	
+		<br>
+		<br>
+	  
+	  	<form th:action="@{/inicio}" method="post">	
+		<input type="submit" value="Ver todos los estudiantes"/>
+		<br>
+		<br>
+		</form>	
+	
+		</div>
+    	</div>
+    	<div class="col-md-8 mx-auto">
+        <nav class="navbar navbar-dark bg-primary"> 
+        <h2 style="color:#FFFFFF" align="center">Estudiante</h2>
+		</nav>
+		<br>
+		<br>
+	<form th:action="@{/buscarEstudiante}" method="post">
+		<label>Codigo:</label>
+		<input type="number" name="codigo"><br>	
+		<br>	
+		<input type="submit" name="action" value="Buscar"/>
+		<input type="submit" name="action" value="Editar"/>
+		
+	</form>	
+	<br>
+	<br>	
+	
+	</div>
+	
+		<div class="col-md-8 mx-auto">
+        <nav class="navbar navbar-dark bg-primary"> 
+        <h2 style="color:#FFFFFF" align="center">Filtrar Estudiante</h2>
+		</nav>
+		<br>
+		<br>
+	<form th:action="@{/filtrarEstudiante}" method="post">
+		<label>Nombre:</label>
+		<input type="text" name="nombre"><br>		
+		<input type="submit" value="Filtrar"/>
+		
+	</form>	
+	<br>
+	<br>	
+	
+	</div>
+	
+		<div class="col-md-8 mx-auto">
+        <nav class="navbar navbar-dark bg-primary"> 
+        <h2 style="color:#FFFFFF" align="center">Borrar Estudiante</h2>
+		</nav>
+		<br>
+		<br>
+	<form th:action="@{/borrarEstudiante}" method="post">
+		<label>Codigo:</label>
+		<input type="number" name="codigo"><br>	
+		<br>	
+		<input type="submit" value="Borrar"/>
+		
+	</form>	
+	<br>
+	<br>	
+	
+	</div>
+	
+		<div class="col-md-8 mx-auto">
+        <nav class="navbar navbar-dark bg-primary"> 
+        <h2 style="color:#FFFFFF" align="center">Ingresar Estudiante</h2>
+		</nav>
+		<br>
+		<br>
+	
+	
+	<form th:action="@{/ins}" method="post">	
+		<input type="submit" value="Nuevo Estudiante"/>
+		
+	</form>	
+	
+	<br>
+	<br>	
+	
+	</div>
+	
+	
+</body>
+</html>
